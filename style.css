@@ -1,0 +1,391 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css");
+
+*{
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h4:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+h6 {
+    margin: 0;
+    display: inline-block;
+    font-size: 14px;
+    padding: 7px 0 0 0;
+}
+
+h6:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+span {
+    color: black;
+    font-weight: 700;
+}
+
+button {
+    padding: 9px 10px;
+    border: none;
+    border-radius: 15px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: rgb(29, 155, 240);
+    color: white;
+    font-weight: 700; 
+    transition: opacity 0.5s;  
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    margin: 0 0px;;
+    justify-content: space-between;
+    padding: 0;
+    
+    
+
+}
+
+ul li {
+    padding: 10px 25px;
+    font-weight: 700;
+    
+}
+
+ul li a {
+    text-decoration: none;
+    color: rgb(83, 100, 113);
+    height: 100%;
+}
+
+.container {
+    width: 40%;
+    height: 100%;
+    margin: 0 auto;
+    border: 1px solid lightgrey;
+}
+
+.username-header {
+    height: 40px;
+    display:flex;
+    align-items: center;
+}
+
+.user-header-data {
+    margin-left: 0;
+    width: 90%;
+}
+
+.following-text {
+    display: inline-block;
+}
+
+.following-text:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    text-decoration: underline;
+}
+
+.followers-text {
+    display: inline-block;
+    margin-left: 0;
+}
+
+.followers-text:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    text-decoration: underline;
+}
+
+.back-button {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-button-circle {
+    width: 30px;
+    border-radius: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-button-circle:hover {
+    background-color: rgb(29, 155, 240,0.3);
+}
+
+.back-icon {
+    color:rgb(29, 155, 240);
+    font-size: 25px;
+}
+
+.back-icon:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.user-header-data h4 {
+    margin: 0 0;
+}
+
+.user-header-data p {
+    margin: 0 0;
+    padding: 0 0;
+    font-size: 10px;
+    font-weight: 300;
+    color: rgb(83, 100, 113)
+}
+
+.cover-image {
+    height: 190px;
+    background-position: center;
+    background-size: cover;
+}
+
+.description {
+    height: 160px;
+    display: flex;
+    
+}
+
+.avatar {
+    width: 50%;
+}
+
+.avatar h4, p {
+    margin: 0 10px;
+    padding-left: 8px;
+}
+
+.avatar p {
+    font-size: 13px;
+    color: rgb(83, 100, 113);
+    padding-bottom: 8px;
+    padding-left: 8px;
+}
+
+.bi-calendar3 {
+    color:rgb(83, 100, 113)
+}
+
+.avatar-img {
+    width: 120px;
+    border-radius: 50%;
+    border: 3px solid white;
+    margin: -60px 0 0 10px;   
+}
+
+.avatar-img:hover {
+    cursor: pointer;
+}
+
+.follow {
+    position: relative;
+    width: 50%;
+}
+
+.navigation-bar {
+    height: 40px;
+    background-color: rgb(167, 145, 145);
+    display:flex;
+    margin: 0 0;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgrey;
+    ;
+
+}
+
+.navigation-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 32px;
+    height: 100%;
+    background-color: white;
+    transition: background-color 0.4s;
+    
+}
+
+.navigation-item:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    
+}
+
+.item1 {
+    width: 20%;
+}
+
+.item2 {
+    width: 40%;
+}
+
+.item3 {
+    width: 20%;
+}
+
+.item4 {
+    width: 20%;
+}
+
+.navigation-item {
+    display: flex;
+    flex-direction: column;
+ 
+}
+
+.navigation-item a {
+    text-decoration: none;
+    color: rgb(83, 100, 113);
+    font-weight: 700;
+    
+    
+}
+
+.hidden {
+    display: none;
+}
+
+.underline-nav-item {
+    height: 4px;
+    width: 100%;
+    border-radius: 9999px;
+    background-color: rgb(29, 155, 240);
+}
+
+.tweet {
+    display: flex;
+    border-bottom: 1px solid lightgrey;
+}
+
+.small-avatar-img {
+    width: 10%
+}
+
+.small-avatar-img:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.avatar-img-tweet {
+    width: 50px;
+    border-radius: 50%;
+    margin: 7px 5px;
+}
+
+.username-tweet {
+    display: inline-block;
+    font-size: 11px;
+    margin-left: 0;
+    padding-left: 0
+}
+
+.tweet-data {
+    margin-left: 5px;
+    width: 75%;
+}
+
+.tweet-text {
+    margin-left: 0;
+    padding: 5px 0;
+    font-size: 13px;
+}
+
+.tweet-icons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tweet-icon {
+    opacity: 0.5;
+    font-size: 14px;
+}
+
+.icon-3 {
+    font-size:13px;
+}
+
+.icon-1:hover {
+    cursor: pointer;
+    color:rgb(29, 155, 240);
+}
+
+.icon-2:hover {
+    cursor: pointer;
+    color: rgba(23, 221, 23)
+}
+
+.icon-3:hover {
+    cursor: pointer;
+    color:rgb(240, 29, 110);
+}
+
+.icon-4:hover {
+    cursor: pointer;
+    color:rgb(29, 155, 240);
+}
+
+.icon-box {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-box-1:hover {
+    background-color:rgb(29, 155, 240,0.30);
+    opacity: 1;
+    
+}
+
+.icon-box-2:hover {
+    background-color:rgba(23, 221, 23, 0.3);
+    opacity: 1;
+    
+}
+
+.icon-box-3:hover {
+    background-color:rgb(240, 29, 110, 0.3);
+    opacity: 1;
+    
+}
+
+.icon-box-4:hover {
+    background-color:rgb(29, 155, 240,0.30);
+    opacity: 1;
+    
+}
+
+.more-options-button {
+    width: 15%;
+    position: relative;
+}
+
+.bi-three-dots {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+}
+
+.bi-three-dots:hover {
+    cursor: pointer;
+    background-color:rgb(29, 155, 240,0.30);
+    opacity: 1;
+}
+
+
