@@ -1,4 +1,10 @@
-var user1 = {
+var params = new URLSearchParams(window.location.search)
+
+var currentUser = params.get("user");
+console.log(currentUser);
+
+var users = {
+ user1 : {
     userName: '@elonmusk',
     displayName: 'Elon Musk',
     joinedDate: 'June 2009',
@@ -20,9 +26,9 @@ var user1 = {
             timestamp: '2/09/2021 12:11:51'
         }
     ]
-};
+},
 
-var user2 = {
+ user2 : {
     userName: '@BillGates',
     displayName: 'Bill Gates',
     joinedDate: 'June 2009',
@@ -42,8 +48,13 @@ var user2 = {
         {
             text: 'In 2020, I read a book every hour.',
             timestamp: '2/09/2021 12:11:51'
+        },
+        {
+            text: 'In 2021, I will read even more books.',
+            timestamp: '2/09/2021 12:11:51'
         }
     ]
+}
 };
 
 
@@ -80,31 +91,31 @@ for (var item of navItems) {
 }
 
 var counter = 0;
-for(tweets in user1.tweets) {
+for(var tweet in users[currentUser].tweets) {
     counter+=1;
 }
 console.log(counter);
 
-var header = document.querySelector(".user-header-data").innerHTML = `<h4>${user1.displayName}</h4> <p>${floorNumbers(counter)} tweets</p>`
+var header = document.querySelector(".user-header-data").innerHTML = `<h4>${users[currentUser].displayName}</h4> <p>${floorNumbers(counter)} tweets</p>`
 
 var coverImage = document.getElementsByClassName("cover-image")[0]
-coverImage.style.backgroundImage = `url("${user1.coverPhotoURL}")`
+coverImage.style.backgroundImage = `url("${users[currentUser].coverPhotoURL}")`
 
-var avatar = document.querySelector(".avatar").innerHTML = `<img class="avatar-img" src="${user1.avatarURL}" alt="">    
-                                                            <h4>${user1.displayName}</h4> <p>${user1.userName}</p> <p> <i class="bi bi-calendar3"></i> Joined ${user1.joinedDate}</p> 
-                                                            <p class="following-text"><span>${floorNumbers(user1.followingCount)}</span> Following</p> 
-                                                            <p class="followers-text"><span>${floorNumbers(user1.followerCount)}</span> Followers</p>`
+var avatar = document.querySelector(".avatar").innerHTML = `<img class="avatar-img" src="${users[currentUser].avatarURL}" alt="">    
+                                                            <h4>${users[currentUser].displayName}</h4> <p>${users[currentUser].userName}</p> <p> <i class="bi bi-calendar3"></i> Joined ${users[currentUser].joinedDate}</p> 
+                                                            <p class="following-text"><span>${floorNumbers(users[currentUser].followingCount)}</span> Following</p> 
+                                                            <p class="followers-text"><span>${floorNumbers(users[currentUser].followerCount)}</span> Followers</p>`
 
 
 
-for (var i = 0; i<user1.tweets.length; i++) {
+for (var i = 0; i<users[currentUser].tweets.length; i++) {
     console.log(i)
     var newTweet = document.createElement("div")
     newTweet.classList.add("tweet")
-    newTweet.innerHTML = `<div class="small-avatar-img"><img class="avatar-img-tweet" src="${user1.avatarURL}" alt=""></div>
+    newTweet.innerHTML = `<div class="small-avatar-img"><img class="avatar-img-tweet" src="${users[currentUser].avatarURL}" alt=""></div>
     <div class="tweet-data">
-        <h6>${user1.displayName}</h6> <p class="username-tweet">${user1.userName}</p>
-        <p class="tweet-text">${user1.tweets[i].text}</p>
+        <h6>${users[currentUser].displayName}</h6> <p class="username-tweet">${users[currentUser].userName}</p>
+        <p class="tweet-text">${users[currentUser].tweets[i].text}</p>
         <div class="tweet-icons">
         <div class="icon-box icon-box-1"><i class="bi bi-reply tweet-icon icon-1"></i></div>
         <div class="icon-box icon-box-2"><i class="bi bi-arrow-clockwise tweet-icon icon-2"></i></div> 
@@ -118,6 +129,4 @@ for (var i = 0; i<user1.tweets.length; i++) {
 }
 
 
-
-document.querySelector(".tweets")
 

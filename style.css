@@ -27,7 +27,7 @@ span {
     font-weight: 700;
 }
 
-button {
+.follow button {
     padding: 9px 10px;
     border: none;
     border-radius: 15px;
@@ -40,36 +40,18 @@ button {
     transition: opacity 0.5s;  
 }
 
-button:hover {
+.follow button:hover {
     cursor: pointer;
     opacity: 0.7;
 }
 
 ul {
     list-style: none;
-    display: flex;
-    margin: 0 0px;;
-    justify-content: space-between;
-    padding: 0;
     
-    
-
-}
-
-ul li {
-    padding: 10px 25px;
-    font-weight: 700;
-    
-}
-
-ul li a {
-    text-decoration: none;
-    color: rgb(83, 100, 113);
-    height: 100%;
 }
 
 .container {
-    width: 40%;
+    /* width: 40%; */
     height: 100%;
     margin: 0 auto;
     border: 1px solid lightgrey;
@@ -269,6 +251,13 @@ ul li a {
 .tweet {
     display: flex;
     border-bottom: 1px solid lightgrey;
+    background-color: white;
+    transition: background-color 0.5s;
+}
+
+.tweet:hover {
+    cursor: pointer;
+    background-color: rgba(231, 228, 228, 0.692);
 }
 
 .small-avatar-img {
@@ -294,8 +283,8 @@ ul li a {
 }
 
 .tweet-data {
-    margin-left: 5px;
-    width: 75%;
+    margin-left: 30px;
+    width: 80%;
 }
 
 .tweet-text {
@@ -318,26 +307,6 @@ ul li a {
     font-size:13px;
 }
 
-.icon-1:hover {
-    cursor: pointer;
-    color:rgb(29, 155, 240);
-}
-
-.icon-2:hover {
-    cursor: pointer;
-    color: rgba(23, 221, 23)
-}
-
-.icon-3:hover {
-    cursor: pointer;
-    color:rgb(240, 29, 110);
-}
-
-.icon-4:hover {
-    cursor: pointer;
-    color:rgb(29, 155, 240);
-}
-
 .icon-box {
     border-radius: 50%;
     height: 20px;
@@ -350,11 +319,13 @@ ul li a {
 .icon-box-1:hover {
     background-color:rgb(29, 155, 240,0.30);
     opacity: 1;
+    color:rgb(29, 155, 240);
     
 }
 
 .icon-box-2:hover {
     background-color:rgba(23, 221, 23, 0.3);
+    color: rgba(23, 221, 23);
     opacity: 1;
     
 }
@@ -362,30 +333,175 @@ ul li a {
 .icon-box-3:hover {
     background-color:rgb(240, 29, 110, 0.3);
     opacity: 1;
+    color:rgb(240, 29, 110);
     
 }
 
 .icon-box-4:hover {
     background-color:rgb(29, 155, 240,0.30);
     opacity: 1;
+    color:rgb(29, 155, 240);
     
 }
 
 .more-options-button {
-    width: 15%;
+    width: 10%;
     position: relative;
+
 }
 
-.bi-three-dots {
+.more-options-button .tweet-icon {
     position: absolute;
     right: 7px;
     top: 7px;
 }
 
-.bi-three-dots:hover {
-    cursor: pointer;
-    background-color:rgb(29, 155, 240,0.30);
-    opacity: 1;
+
+/*timeline page */
+
+ul {
+    font-size: 25px;
+    font-weight: 500;
 }
 
+ul li {
+    margin-bottom: 30px;
+}
+
+.timeline-container {
+    display: flex;
+    height: 900px;
+}
+
+.left-section {
+    width: 30%;
+    border-right: 1px solid #f1f1f1;
+}
+
+.middle-section {
+    width: 40%;
+}
+
+.right-section {
+    width: 30%;
+    background-color: blue;;
+}
+
+.left-section-button {
+    width: 80%;
+    padding: 15px 30px;
+    border-radius: 30px;
+    border: none;
+    background-color: rgb(29, 155, 240);
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.twitter-logo{
+    width: 80px;
+    margin-bottom: 30px;
+    margin-left: 0;
+}
+
+.timeline-menu p {
+    display: inline-block;
+}
+
+.timeline-nav-icon {
+    margin-right: 10px;
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f1f1f1;
+    width: 100%;
+}
+
+.timeline-header h3 {
+    margin-left: 20px;
+}
+
+.timeline-header i {
+    margin-right: 10px;
+}
+
+.create-tweet {
+    display: flex;
+    border-bottom: 6px solid #f1f1f1;
+}
+
+.timeline-avatar{
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tweet-input-section {
+    width: 85%;
+}
+
+.ceo-microsoft {
+    width: 60px;
+    clip-path: circle();
+    
+}
+
+.input-field {
+    padding: 20px 0 5px 0;
+}
+
+.input-field-controls {
+    display:flex;
+    justify-content: space-between;
+}
+
+.input-field-icons {
+    display: flex;
+    align-items: center;
+}
+
+.input-field-icon {
+    margin-left: 8px;
+    color: rgb(29, 155, 240);
+}
+
+.input-field-btn {
+    padding: 9px 10px;
+    border: none;
+    border-radius: 15px;
+    top: 10px;
+    background-color: rgb(29, 155, 240);
+    color: white;
+    font-weight: 700; 
+    transition: opacity 0.5s; 
+    margin: 0 10px 5px 0
+}
+
+
+@media only screen and (min-width: 1200px) {
+
+    .container {
+        width: 50%;
+    }
+
+    .tweet-data {
+        margin-left: 0;
+        width: 75%;
+    }
+
+    .more-options-button {
+        width: 18%;
+        position: relative;
+    }
+
+    .small-avatar-img {
+        margin: 0 15px 0 0;
+        width: 7%;
+    }
+}
 
