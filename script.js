@@ -3,6 +3,10 @@ var params = new URLSearchParams(window.location.search)
 var currentUser = params.get("user");
 console.log(currentUser);
 
+if (currentUser === null) {
+    console.log("No parameters given")
+}
+
 var users = {
  user1 : {
     userName: '@elonmusk',
@@ -71,6 +75,7 @@ var floorNumbers = function (number) {
 }
 
 var button = document.querySelector(".btn")
+if(button){
 button.addEventListener("click",function(){
     if (button.innerHTML === "Following") {
         button.innerHTML = "Follow";
@@ -78,6 +83,7 @@ button.addEventListener("click",function(){
         button.innerHTML = "Following";
     }
 })
+}
 
 for (var item of navItems) {
     item.addEventListener("click", function(e){
@@ -91,23 +97,32 @@ for (var item of navItems) {
 }
 
 var counter = 0;
+if (currentUser) {
 for(var tweet in users[currentUser].tweets) {
     counter+=1;
 }
+}
 console.log(counter);
 
-var header = document.querySelector(".user-header-data").innerHTML = `<h4>${users[currentUser].displayName}</h4> <p>${floorNumbers(counter)} tweets</p>`
+var header = document.querySelector(".user-header-data")
+if(header){
+header.innerHTML = `<h4>${users[currentUser].displayName}</h4> <p>${floorNumbers(counter)} tweets</p>`
+}
 
 var coverImage = document.getElementsByClassName("cover-image")[0]
+if(coverImage){
 coverImage.style.backgroundImage = `url("${users[currentUser].coverPhotoURL}")`
+}
 
-var avatar = document.querySelector(".avatar").innerHTML = `<img class="avatar-img" src="${users[currentUser].avatarURL}" alt="">    
+var avatar = document.querySelector(".avatar")
+if(avatar){
+avatar.innerHTML = `<img class="avatar-img" src="${users[currentUser].avatarURL}" alt="">    
                                                             <h4>${users[currentUser].displayName}</h4> <p>${users[currentUser].userName}</p> <p> <i class="bi bi-calendar3"></i> Joined ${users[currentUser].joinedDate}</p> 
                                                             <p class="following-text"><span>${floorNumbers(users[currentUser].followingCount)}</span> Following</p> 
                                                             <p class="followers-text"><span>${floorNumbers(users[currentUser].followerCount)}</span> Followers</p>`
+                                                        }
 
-
-
+if(currentUser) {
 for (var i = 0; i<users[currentUser].tweets.length; i++) {
     console.log(i)
     var newTweet = document.createElement("div")
@@ -127,6 +142,36 @@ for (var i = 0; i<users[currentUser].tweets.length; i++) {
 
      document.querySelector(".tweets").appendChild(newTweet);
 }
+} else {
+    for (var i = 1; i < Object.keys(users).length+1; i++) {
+        for (var j = 0; j < users[`user${i}`].tweets.length; j++) {
+            console.log(users[`user${i}`].tweets[j].text)
+            var newTweet = document.createElement("div")
+            newTweet.classList.add("tweet")
+            newTweet.innerHTML = `<div class="small-avatar-img"><img class="avatar-img-tweet" src="${users[`user${i}`].avatarURL}" alt=""></div>
+            <div class="tweet-data">
+                <h6>${users[`user${i}`].displayName}</h6> <p class="username-tweet">${users[`user${i}`].userName}</p>
+                <p class="tweet-text">${users[`user${i}`].tweets[j].text}</p>
+                <div class="tweet-icons">
+                <div class="icon-box icon-box-1"><i class="bi bi-reply tweet-icon icon-1"></i></div>
+                <div class="icon-box icon-box-2"><i class="bi bi-arrow-clockwise tweet-icon icon-2"></i></div> 
+                <div class="icon-box icon-box-3"><i class="bi bi-heart tweet-icon icon-3"></i></div> 
+                <div class="icon-box icon-box-4"><i class="bi bi-box-arrow-up tweet-icon icon-4"></i></div>
+                </div>
+            </div>
+            <div class="more-options-button"><i class="bi bi-three-dots tweet-icon"></i></div>`
+
+            document.querySelector(".tweets").appendChild(newTweet);
+        }
+    }
+}
+
+
+
+
+
+
+
 
 
 
