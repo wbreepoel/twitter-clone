@@ -19,15 +19,15 @@ var users = {
     tweets: [
         {
             text: 'I admit to judging books by their cover',
-            timestamp: '2/10/2021 00:01:20'
+            timestamp: '05/10/2021 00:01:20'
         },
         {
             text: 'Starship to the moon',
-            timestamp: '2/09/2021 18:37:12'
+            timestamp: '08/12/2021 18:37:12'
         },
         {
             text: 'Out on launch pad, engine swap underway',
-            timestamp: '2/09/2021 12:11:51'
+            timestamp: '3/09/2021 12:11:51'
         }
     ]
 },
@@ -43,19 +43,19 @@ var users = {
     tweets: [
         {
             text: 'Everybody asks, how is the next Windows coming along? But nobody asks how is Bill? :/',
-            timestamp: '2/10/2021 00:01:20'
+            timestamp: '04/07/2021 00:01:20'
         },
         {
             text: 'Should I start tweeting memes? Let me know in a comment.',
-            timestamp: '2/09/2021 18:37:12'
+            timestamp: '08/11/2021 18:37:12'
         },
         {
             text: 'In 2020, I read a book every hour.',
-            timestamp: '2/09/2021 12:11:51'
+            timestamp: '02/09/2021 12:11:51'
         },
         {
             text: 'In 2021, I will read even more books.',
-            timestamp: '2/09/2021 12:11:51'
+            timestamp: '02/10/2021 12:15:51'
         }
     ]
 }
@@ -122,6 +122,29 @@ avatar.innerHTML = `<img class="avatar-img" src="${users[currentUser].avatarURL}
                                                             <p class="followers-text"><span>${floorNumbers(users[currentUser].followerCount)}</span> Followers</p>`
                                                         }
 
+var sortedTweets = []
+
+for (var i = 1; i < Object.keys(users).length+1; i++) {
+    for (var j = 0; j < users[`user${i}`].tweets.length; j++) {
+        sortedTweets.push([users[`user${i}`].tweets[j].text, 
+                           users[`user${i}`].tweets[j].timestamp,
+                           users[`user${i}`].avatarURL,
+                           users[`user${i}`].userName,
+                           users[`user${i}`].displayName,
+                           `user${i}`]
+                           )
+    }
+}
+
+sortedTweets.sort(function(a, b){
+    var c = new Date(a[1])
+    var d = new Date(b[1])
+
+    return c-d;
+})
+
+console.log(sortedTweets);
+
 if(currentUser) {
 for (var i = 0; i<users[currentUser].tweets.length; i++) {
     console.log(i)
@@ -143,28 +166,47 @@ for (var i = 0; i<users[currentUser].tweets.length; i++) {
      document.querySelector(".tweets").appendChild(newTweet);
 }
 } else {
-    for (var i = 1; i < Object.keys(users).length+1; i++) {
-        for (var j = 0; j < users[`user${i}`].tweets.length; j++) {
-            console.log(users[`user${i}`].tweets[j].text)
-            var newTweet = document.createElement("div")
-            newTweet.classList.add("tweet")
-            newTweet.innerHTML = `<div class="small-avatar-img"><img class="avatar-img-tweet" src="${users[`user${i}`].avatarURL}" alt=""></div>
-            <div class="tweet-data">
-                <h6>${users[`user${i}`].displayName}</h6> <p class="username-tweet">${users[`user${i}`].userName}</p>
-                <p class="tweet-text">${users[`user${i}`].tweets[j].text}</p>
-                <div class="tweet-icons">
-                <div class="icon-box icon-box-1"><i class="bi bi-reply tweet-icon icon-1"></i></div>
-                <div class="icon-box icon-box-2"><i class="bi bi-arrow-clockwise tweet-icon icon-2"></i></div> 
-                <div class="icon-box icon-box-3"><i class="bi bi-heart tweet-icon icon-3"></i></div> 
-                <div class="icon-box icon-box-4"><i class="bi bi-box-arrow-up tweet-icon icon-4"></i></div>
+    for(var i = 0; i<sortedTweets.length; i++) {
+        var newTweet = document.createElement("div")
+                newTweet.classList.add("tweet")
+                newTweet.innerHTML = `<div class="small-avatar-img"><img class="avatar-img-tweet ${sortedTweets[i][5]}" src="${sortedTweets[i][2]}" alt=""></div>
+                <div class="tweet-data">
+                    <h6 class="user ${sortedTweets[i][5]}">${sortedTweets[i][4]}</h6> <p class="username-tweet">${sortedTweets[i][3]}</p>
+                    <p class="tweet-text">${sortedTweets[i][0]}</p>
+                    <div class="tweet-icons">
+                    <div class="icon-box icon-box-1"><i class="bi bi-reply tweet-icon icon-1"></i></div>
+                    <div class="icon-box icon-box-2"><i class="bi bi-arrow-clockwise tweet-icon icon-2"></i></div> 
+                    <div class="icon-box icon-box-3"><i class="bi bi-heart tweet-icon icon-3"></i></div> 
+                    <div class="icon-box icon-box-4"><i class="bi bi-box-arrow-up tweet-icon icon-4"></i></div>
+                    </div>
                 </div>
-            </div>
-            <div class="more-options-button"><i class="bi bi-three-dots tweet-icon"></i></div>`
-
-            document.querySelector(".tweets").appendChild(newTweet);
-        }
+                <div class="more-options-button"><i class="bi bi-three-dots tweet-icon"></i></div>`
+    
+                document.querySelector(".tweets").appendChild(newTweet);
+    
     }
+
 }
+
+[...document.querySelectorAll(".user")].forEach(function(item) {
+    console.log(item)
+    item.addEventListener("click", function(){
+        // console.log(item.querySelector(".user").classList[1]);
+        window.open(`index.html?user=${item.classList[1]}`)
+    })
+});
+
+
+[...document.querySelectorAll(".avatar-img-tweet")].forEach(function(item) {
+    console.log(item)
+    item.addEventListener("click", function(){
+        // console.log(item.querySelector(".user").classList[1]);
+        window.open(`index.html?user=${item.classList[1]}`)
+    })
+})
+
+
+
 
 
 
