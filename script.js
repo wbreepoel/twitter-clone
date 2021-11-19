@@ -1,11 +1,6 @@
 var params = new URLSearchParams(window.location.search)
 
 var currentUser = params.get("user");
-console.log(currentUser);
-
-if (currentUser === null) {
-    console.log("No parameters given")
-}
 
 var users = {
  user1 : {
@@ -19,15 +14,16 @@ var users = {
     tweets: [
         {
             text: 'I admit to judging books by their cover',
-            timestamp: '05/10/2021 00:01:20'
+            timestamp: '11/19/2021 09:11:51'
         },
         {
             text: 'Starship to the moon',
-            timestamp: '08/12/2021 18:37:12'
+            timestamp: '07/19/2021 10:42:10'
         },
         {
             text: 'Out on launch pad, engine swap underway',
-            timestamp: '3/09/2021 12:11:51'
+            timestamp: '03/10/2021 00:01:20'
+            
         }
     ]
 },
@@ -43,26 +39,25 @@ var users = {
     tweets: [
         {
             text: 'Everybody asks, how is the next Windows coming along? But nobody asks how is Bill? :/',
-            timestamp: '04/07/2021 00:01:20'
+            timestamp: '11/19/2021 08:15:51'
         },
         {
             text: 'Should I start tweeting memes? Let me know in a comment.',
-            timestamp: '08/11/2021 18:37:12'
+            timestamp: '10/18/2021 07:11:51'
         },
         {
             text: 'In 2020, I read a book every hour.',
-            timestamp: '02/09/2021 12:11:51'
+            timestamp: '08/11/2021 18:37:12'
         },
         {
-            text: 'In 2021, I will read even more books.',
-            timestamp: '02/10/2021 12:15:51'
+            text: 'In 2021, I will have read even more books.',
+            timestamp: '08/11/2021 18:40:20'
         }
     ]
 }
 };
 
-
-var navItems = document.getElementsByClassName("navigation-item");
+var navItems = document.getElementsByClassName("navigation-it§em");
 
 var floorNumbers = function (number) {
     if(number > 999 && number <= 999499) {
@@ -102,7 +97,6 @@ for(var tweet in users[currentUser].tweets) {
     counter+=1;
 }
 }
-console.log(counter);
 
 var header = document.querySelector(".user-header-data")
 if(header){
@@ -140,19 +134,53 @@ sortedTweets.sort(function(a, b){
     var c = new Date(a[1])
     var d = new Date(b[1])
 
-    return c-d;
+    return d-c;
 })
 
-console.log(sortedTweets);
+var calculateTime = function (tweetDate) {
+    var timeInMillisec = new Date().getTime() - new Date(tweetDate).getTime();
+    var year,
+      month,
+      day,
+      hour,
+      minute,
+      second;
+
+    second = Math.floor(timeInMillisec / 1000);
+    minute = Math.floor(second / 60);
+    second = second % 60;
+    hour = Math.floor(minute / 60);
+    minute = minute % 60;
+    day = Math.floor(hour / 24);
+    hour = hour % 24;
+    month = Math.floor(day / 30);
+    day = day % 30;
+    year = Math.floor(month / 12);
+    month = month % 12;
+
+    if (year >= 1) {
+        console.log(`${year}y`);
+    } else if (month >= 1) {
+        return `${month}mo`;
+    } else if (day >= 1) {
+        return `${day}d`;
+    } else if (hour >= 1) {
+        return `${hour}h`;
+    } else if (minute >= 1) {
+        return `${minute}m`;
+    } else if (second >= 1) {
+        return `${second}s`;
+    }
+    
+}
 
 if(currentUser) {
 for (var i = 0; i<users[currentUser].tweets.length; i++) {
-    console.log(i)
     var newTweet = document.createElement("div")
     newTweet.classList.add("tweet")
     newTweet.innerHTML = `<div class="small-avatar-img"><img class="avatar-img-tweet" src="${users[currentUser].avatarURL}" alt=""></div>
     <div class="tweet-data">
-        <h6>${users[currentUser].displayName}</h6> <p class="username-tweet">${users[currentUser].userName}</p>
+        <h6>${users[currentUser].displayName}</h6> <p class="username-tweet">${users[currentUser].userName}</p> <p class="time-of-tweet">∙${calculateTime(users[currentUser].tweets[i].timestamp)}</p>
         <p class="tweet-text">${users[currentUser].tweets[i].text}</p>
         <div class="tweet-icons">
         <div class="icon-box icon-box-1"><i class="bi bi-reply tweet-icon icon-1"></i></div>
@@ -171,7 +199,7 @@ for (var i = 0; i<users[currentUser].tweets.length; i++) {
                 newTweet.classList.add("tweet")
                 newTweet.innerHTML = `<div class="small-avatar-img"><img class="avatar-img-tweet ${sortedTweets[i][5]}" src="${sortedTweets[i][2]}" alt=""></div>
                 <div class="tweet-data">
-                    <h6 class="user ${sortedTweets[i][5]}">${sortedTweets[i][4]}</h6> <p class="username-tweet">${sortedTweets[i][3]}</p>
+                    <h6 class="user ${sortedTweets[i][5]}">${sortedTweets[i][4]}</h6> <p class="username-tweet">${sortedTweets[i][3]}</p> <p class="time-of-tweet">∙${calculateTime(sortedTweets[i][1])}</p>
                     <p class="tweet-text">${sortedTweets[i][0]}</p>
                     <div class="tweet-icons">
                     <div class="icon-box icon-box-1"><i class="bi bi-reply tweet-icon icon-1"></i></div>
@@ -189,7 +217,6 @@ for (var i = 0; i<users[currentUser].tweets.length; i++) {
 }
 
 [...document.querySelectorAll(".user")].forEach(function(item) {
-    console.log(item)
     item.addEventListener("click", function(){
         // console.log(item.querySelector(".user").classList[1]);
         window.open(`index.html?user=${item.classList[1]}`)
@@ -198,12 +225,12 @@ for (var i = 0; i<users[currentUser].tweets.length; i++) {
 
 
 [...document.querySelectorAll(".avatar-img-tweet")].forEach(function(item) {
-    console.log(item)
     item.addEventListener("click", function(){
         // console.log(item.querySelector(".user").classList[1]);
         window.open(`index.html?user=${item.classList[1]}`)
     })
 })
+
 
 
 

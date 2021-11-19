@@ -275,11 +275,12 @@ ul {
     margin: 7px 5px;
 }
 
-.username-tweet {
+.username-tweet, .time-of-tweet {
     display: inline-block;
     font-size: 11px;
-    margin-left: 0;
-    padding-left: 0
+    margin: 0;
+    padding: 0;
+    color: darkgrey;
 }
 
 .tweet-data {
@@ -314,6 +315,10 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.icon-box-1, .icon-box-2, .icon-box-3, .icon-box-4 {
+    transition: background-color 0.5s;
 }
 
 .icon-box-1:hover {
@@ -380,7 +385,7 @@ ul li:hover {
 
 .timeline-container {
     display: flex;
-    height: 900px;
+    height: 100%;
 }
 
 .left-section {
@@ -390,6 +395,7 @@ ul li:hover {
 
 .middle-section {
     width: 50%;
+    border-right: 1px solid #f1f1f1;
 }
 
 .right-section {
@@ -424,11 +430,15 @@ ul li:hover {
     font-size: 20px;
     margin-top: 10px;
     transition: opacity 0.5s;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s
 }
 
 .left-section-button:hover {
     cursor: pointer;
     opacity: 0.7;
+    top: -5px;
     
 }
 
@@ -436,6 +446,13 @@ ul li:hover {
     width: 80px;
     margin-bottom: 30px;
     margin-left: 0;
+    position: relative;
+    top: 0;
+    transition: top 0.5s ease;
+}
+
+.twitter-logo:hover {
+    top: -5px;
 }
 
 .timeline-menu p {
@@ -525,12 +542,16 @@ ul li:hover {
     color: white;
     font-weight: 700; 
     transition: opacity 0.5s; 
-    margin: 0 10px 5px 0
+    margin: 0 10px 5px 0;
+    position: relative;
+    top: 0;
+    transition: top 0.5s ease;
 }
 
 .input-field-btn:hover {
     cursor: pointer;
     opacity: 0.7;
+    top: -5px;
 }
 
 
