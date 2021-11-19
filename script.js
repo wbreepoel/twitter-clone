@@ -219,7 +219,7 @@ for (var i = 0; i<users[currentUser].tweets.length; i++) {
 [...document.querySelectorAll(".user")].forEach(function(item) {
     item.addEventListener("click", function(){
         // console.log(item.querySelector(".user").classList[1]);
-        window.open(`index.html?user=${item.classList[1]}`)
+        window.open(`timeline.html?user=${item.classList[1]}`)
     })
 });
 
@@ -227,7 +227,7 @@ for (var i = 0; i<users[currentUser].tweets.length; i++) {
 [...document.querySelectorAll(".avatar-img-tweet")].forEach(function(item) {
     item.addEventListener("click", function(){
         // console.log(item.querySelector(".user").classList[1]);
-        window.open(`index.html?user=${item.classList[1]}`)
+        window.open(`timeline.html?user=${item.classList[1]}`)
     })
 })
 
